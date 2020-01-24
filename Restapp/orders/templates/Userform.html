@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Print Order {% endblock %}
+
+{% block body %}
+
+                <section>
+                    <div class="section-body">
+                        <!-- BEGIN DATATABLE 2 -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-head style-primary">
+                                        <header>Entry Form</header>
+                                        <div class="tools">
+                                            <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+                                            <a class="btn btn-icon-toggle btn-close"><i class="md md-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+
+
+
+<center>
+{% block jquery %}
+<script>
+       $(document).ready(function(){
+     $('#id_Mobile_No').change(function () {
+      var Mobile_No = $(this).val();
+       console.log("Maya");
+      $.ajax({
+        url:'{% url "User:validate_Mobile_No" %}',
+        data: {
+          'Mobile_No': Mobile_No
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("A user with this Mobile_No already exists.");
+            $('#id_Name').val(data['name']);
+            $('#id_Address').val(data['add']);
+            $('#id_Intime').val(data['i']);
+            $('#id_Outtime').val(data['o']);
+            $('#id_Date').val(data['date']);
+            $('#id_Day').val(data['day']);
+            $('#id_Pax').val(data['p']);
+
+          }
+        }
+      });
+    });
+    });
+  </script>
+{% endblock %}
+{%block content%}
+
+<form method="POST" action=''>
+    <center>
+    {%csrf_token %}
+    {{form.as_p}}
+
+
+
+   	<div class="col-md-12">
+													<hr>
+													<div class="card-actionbar-row">
+														<input type="submit" class="btn btn-flat btn-primary ink-reaction" value="SUBMIT">
+													</div>
+												</div>
+											     </center>
+
+</form>
+{% endblock %}</center>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div></section>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111111;
+}
+</style>
+
+</head>
+<body class="body" style= "background-color: Gray">
+<center>
+
+<h1>Welcome to Conrad Restaurant</h1>
+
+ <label>WeLcoMe To CoNaRAd REsTauranT!!!!</label>
+<header>
+
+        <ul>
+            <li><a href="#">HOME</a> </li>
+            <li><a href="#">ABOUT</a> </li>
+            <li><a href="#">SERVICES</a> </li>
+            <li><a href="#">CONTACT</a> </li>
+
+        </ul>
+
+</header>
+</center>
+
+{%block content%}
+
+<form method="POST" action=''>
+    <center>
+    {%csrf_token %}
+
+    {{form1.as_p}}
+
+
+
+    {{form2.as_p}}
+
+    {{form3.as_p}}
+    <input type="submit" value="Save">
+        </center>
+
+</form>
+{% endblock %}
+</body>
+</html>
